@@ -16,7 +16,7 @@ def songs_list(request):
         serializer = SongSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Respons(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def song_detail(request, pk):
@@ -31,4 +31,4 @@ def song_detail(request, pk):
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'DELETE':
         song.delete()
-        return Respons(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
